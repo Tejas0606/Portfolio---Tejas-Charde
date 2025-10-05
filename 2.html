@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tejas Charde | Portfolio</title>
+  <style>
+    
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    h1, h2, h3 {
+      margin: 0 0 1rem 0;
+    }
+
+    
+    header {
+      height: 40vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+      background: url('https://wallpapercave.com/wp/wp2614327.jpg') no-repeat center center/cover;
+      box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.3);
+      padding: 1rem;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      margin: 0;
+      text-shadow: 2px 2px #000;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      margin-top: 0.5rem;
+      text-shadow: 1px 1px #000;
+    }
+
+    
+    nav {
+      position: sticky;
+      top: 0;
+      background: #ffdb4d;
+      z-index: 1000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    nav a {
+      margin: 8px 12px;
+      font-weight: bold;
+      padding: 10px 15px;
+      border-radius: 6px;
+      transition: transform 0.2s, background 0.2s;
+      display: inline-block;
+      color: #333;
+    }
+
+    nav a:hover {
+      background: #ffd633;
+      transform: translateY(-3px);
+    }
+
+    
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      position: absolute;
+      left: 20px;
+    }
+
+    .bar {
+      height: 3px;
+      width: 25px;
+      background-color: #333;
+      margin: 4px 0;
+      transition: 0.4s;
+    }
+
+    .nav-links {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .nav-links.active {
+      display: block;
+      text-align: center;
+      width: 100%;
+      background: #ffdb4d;
+      padding: 10px 0;
+    }
+
+    
+    #about {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #fff;
+      padding: 2rem 1rem;
+    }
+
+    #about::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://i.pinimg.com/originals/e0/f6/45/e0f645fe180c4c9d4e812849c66c8257.jpg') no-repeat center center/cover;
+      filter: blur(4px);
+      z-index: 1;
+    }
+
+    #about .content {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+      padding: 2rem;
+      background: rgba(0, 0, 0, 0.55);
+      border-radius: 12px;
+    }
+
+    #about h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    #about p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+    }
+
+    
+    section {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 2rem;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.9);
+      box-shadow: 4px 4px #333;
+    }
+
+    
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      padding: 1rem;
+      border-radius: 8px;
+      background: #3cb043;
+      color: #fff;
+      font-weight: bold;
+      text-align: center;
+      box-shadow: 4px 4px #222;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 6px 6px #222;
+    }
+
+    
+    .skill {
+      margin-bottom: 1rem;
+    }
+
+    .skill-name {
+      margin-bottom: 0.3rem;
+      font-weight: bold;
+    }
+
+    .skill-bar {
+      width: 100%;
+      background: #ccc;
+      border-radius: 6px;
+      height: 24px;
+      overflow: hidden;
+    }
+
+    .skill-progress {
+      height: 100%;
+      width: 0;
+      background: #3cb043;
+      transition: width 1s;
+    }
+
+ 
+    #contact a {
+      color: #3cb043;
+      font-weight: bold;
+      transition: color 0.2s;
+      word-wrap: break-word;
+    }
+
+    #contact a:hover {
+      color: #2e7d32;
+    }
+
+    
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      background: #3cb043;
+      color: #fff;
+      font-weight: bold;
+      box-shadow: 0 -6px #2e7d32;
+    }
+
+    
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2rem;
+      }
+
+      header p {
+        font-size: 1rem;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+
+      .nav-links {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+      }
+
+      nav a {
+        margin: 8px;
+        display: block;
+      }
+
+      #about h2 {
+        font-size: 2rem;
+      }
+
+      #about p {
+        font-size: 1rem;
+      }
+
+      section {
+        margin: 1rem;
+        padding: 1.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      #about h2 {
+        font-size: 1.6rem;
+      }
+
+      #about p {
+        font-size: 0.9rem;
+      }
+
+      section {
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  
+  <header>
+    <div>
+      <h1>Tejas Charde</h1>
+      <p>Student at SST | Aspiring Game Developer & Ethical Hacker</p>
+    </div>
+  </header>
+
+  
+  <nav>
+    <div class="menu-toggle" id="menu-toggle">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
+    <div class="nav-links" id="nav-links">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  
+  <section id="about">
+    <div class="content">
+      <h2>About Me</h2>
+      <p>Hey there! I’m <strong>Tejas</strong>, a curious mind and creator currently studying at Scaler School of Technology, while also pursuing my B.S. in Data Science and Applications from IIT Madras.</p>
+      <p>I’m deeply passionate about <strong>game development and ethical hacking</strong> — two worlds where logic meets creativity. I love building experiences that challenge players’ minds and stir their emotions. I can code in Java, HTML, CSS, and JavaScript, and I’m constantly experimenting with ways to blend storytelling and technology into something meaningful.</p>
+      <p>When I’m not coding or debugging, you’ll probably find me playing story-driven games — the kind that make you think, feel, and question your choices. Those games inspire me to create worlds of my own, where every decision carries weight and every line of code tells a story.</p>
+      <p>My goal? To craft immersive experiences that not only entertain but also leave an impact.</p>
+    </div>
+  </section>
+
+  
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="projects">
+      <div class="project-card">
+        <h3><a href="https://zoro-0607.itch.io/the-weight-of-choices">The Weight of Choices</a></h3>
+        <p>Every decision carries a shadow.<br>Every sacrifice leaves a scar.<br>Will you bear the weight of your own choices?</p>
+      </div>
+      <div class="project-card">
+        <h3>Leonidas : Tears of Sparta</h3>
+        <p>Sparta weeps in silence.<br>Its king walks alone through ruin.<br>Redemption lies beyond the blade.</p>
+      </div>
+    </div>
+  </section>
+
+  
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="skill">
+      <div class="skill-name">CSS , HTML , JS</div>
+      <div class="skill-bar"><div class="skill-progress" style="width: 75%"></div></div>
+    </div>
+    <div class="skill">
+      <div class="skill-name">Java , GD-Script</div>
+      <div class="skill-bar"><div class="skill-progress" style="width: 70%"></div></div>
+    </div>
+    <div class="skill">
+      <div class="skill-name">Game Development (Godot , Unity)</div>
+      <div class="skill-bar"><div class="skill-progress" style="width: 60%"></div></div>
+    </div>
+  </section>
+
+  
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Email: <a href="mailto:chardetejas1@gmail.com">chardetejas1@gmail.com</a></p>
+    <p>GitHub: <a href="https://github.com/Tejas0606" target="_blank">github.com/Tejas0606</a></p>
+    <p>LinkedIn: <a href="https://www.linkedin.com/in/tejas-charde-9a5165370/" target="_blank">linkedin.com/in/Tejas_Charde</a></p>
+  </section>
+
+ 
+  <footer>
+    © 2025 Tejas Charde | Portfolio
+  </footer>
+
+  
+  <script>
+    window.addEventListener('load', () => {
+      const bars = document.querySelectorAll('.skill-progress');
+      bars.forEach(bar => {
+        const width = bar.style.width;
+        bar.style.width = '0';
+        setTimeout(() => { bar.style.width = width; }, 300);
+      });
+    });
+
+    
+    const menuToggle = document.getElementById('menu-toggle');
+    const navLinks = document.getElementById('nav-links');
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      menuToggle.classList.toggle('open');
+    });
+  </script>
+</body>
+</html>
